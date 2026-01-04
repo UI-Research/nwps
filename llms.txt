@@ -1,0 +1,110 @@
+# nwps
+
+nwps provides R functions to access the [National Water Prediction
+Service (NWPS) API](https://api.water.noaa.gov/nwps/v1/). The NWPS API
+offers hydrological data including gauge metadata, stage and flow
+observations and forecasts, flood categories, and National Water Model
+streamflow predictions.
+
+## Installation
+
+You can install the development version of nwps from GitHub with:
+
+``` r
+# install.packages("pak")
+pak::pak("UI-Research/nwps")
+```
+
+## Example
+
+Retrieve observed and forecast stage data for a gauge, then visualize it
+alongside flood thresholds:
+
+``` r
+library(nwps)
+library(ggplot2)
+library(urbnthemes)
+library(dplyr)
+
+set_urbn_defaults(style = "print")
+
+# Get gauge metadata including flood categories
+gauge <- nwps_gauge("PTTP1")
+
+gauge_name <- gauge$metadata$name
+flood_cats <- gauge$flood_categories
+
+# Get observed and forecast stage/flow data
+stageflow <- nwps_gauge_stageflow("PTTP1")
+
+# Plot observed and forecast stages with flood thresholds
+ggplot(stageflow, aes(x = valid_time, y = primary, color = product)) +
+  geom_line() +
+  geom_hline(
+    data = flood_cats,
+    aes(yintercept = stage, linetype = category),
+    color = "gray40"
+  ) +
+  scale_linetype_manual(values = c("action" = "dotted", "minor" = "dashed",
+                                   "moderate" = "longdash", "major" = "solid")) +
+  labs(
+    title = gauge_name,
+    x = NULL,
+    y = paste0("Stage (", stageflow$primary_units[1], ")"),
+    color = "Product",
+    linetype = "Flood Category"
+  )
+```
+
+![](reference/figures/README-example-1.png)
+
+## Learn more
+
+See
+[`vignette("nwps")`](https://ui-research.github.io/nwps/articles/nwps.md)
+for more examples and detailed usage of all package functions.
+
+# Package index
+
+## Gauge Functions
+
+Functions for accessing gauge data
+
+- [`nwps_gauges()`](https://ui-research.github.io/nwps/reference/nwps_gauges.md)
+  : List NWPS gauges
+- [`nwps_gauge()`](https://ui-research.github.io/nwps/reference/nwps_gauge.md)
+  : Get gauge metadata
+- [`nwps_gauge_ratings()`](https://ui-research.github.io/nwps/reference/nwps_gauge_ratings.md)
+  : Get gauge stage-to-flow ratings
+- [`nwps_gauge_stageflow()`](https://ui-research.github.io/nwps/reference/nwps_gauge_stageflow.md)
+  : Get gauge stage/flow data
+
+## Reach Functions
+
+Functions for accessing NWM reach data
+
+- [`nwps_reach()`](https://ui-research.github.io/nwps/reference/nwps_reach.md)
+  : Get NWM reach metadata
+- [`nwps_reach_streamflow()`](https://ui-research.github.io/nwps/reference/nwps_reach_streamflow.md)
+  : Get NWM reach streamflow forecasts
+
+## Product Functions
+
+Functions for accessing stage/flow products
+
+- [`nwps_product_stageflow()`](https://ui-research.github.io/nwps/reference/nwps_product_stageflow.md)
+  : Get stage/flow product by PEDTS code
+
+## Utilities
+
+Helper and monitoring functions
+
+- [`nwps_monitor()`](https://ui-research.github.io/nwps/reference/nwps_monitor.md)
+  : Get NWPS system monitoring status
+
+# Articles
+
+### All vignettes
+
+- [Getting started with
+  nwps](https://ui-research.github.io/nwps/articles/nwps.md):
