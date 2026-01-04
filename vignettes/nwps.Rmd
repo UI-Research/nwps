@@ -1,0 +1,309 @@
+---
+title: "Getting started with nwps"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Getting started with nwps}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.width = 7,
+  fig.height = 5
+)
+```
+
+```{r setup, message = FALSE}
+library(nwps)
+library(ggplot2)
+library(urbnthemes)
+library(dplyr)
+
+set_urbn_defaults(style = "print")
+```
+
+## Introduction
+
+The nwps package provides R functions to access the [National Water Prediction Service (NWPS) API](https://api.water.noaa.gov/nwps/v1/). The NWPS API offers hydrological data including:
+
+- Gauge metadata and current status
+- Stage and flow observations and forecasts
+- Flood categories and impact statements
+- Stage-to-flow rating curves
+- National Water Model (NWM) streamflow forecasts
+
+This vignette demonstrates how to use each of the package's core functions.
+
+## Finding gauges
+
+### List all gauges in an area
+
+Use `nwps_gauges()` to retrieve gauges within a bounding box. The function returns an sf object with point geometries.
+
+```{r}
+# Get gauges in the Washington DC area
+dc_gauges <- nwps_gauges(
+  bbox = c(-77.5, 38.5, -76.5, 39.5),
+  srid = "EPSG_4326"
+)
+
+dc_gauges |>
+  select(lid, name, state_abbreviation, status_observed_flood_category)
+```
+
+You can also filter to gauges with CatFIM (Categorical Flood Inundation Mapping) configuration:
+
+```{r}
+catfim_gauges <- nwps_gauges(
+  bbox = c(-77.5, 38.5, -76.5, 39.5),
+  catfim = TRUE
+)
+
+nrow(catfim_gauges)
+```
+
+## Getting gauge details
+
+### Retrieve gauge metadata
+
+Use `nwps_gauge()` to get detailed metadata for a specific gauge by its LID or USGS ID. The function returns a list with multiple components.
+
+```{r}
+gauge <- nwps_gauge("PTTP1")
+
+# Basic metadata (as sf object)
+gauge$metadata
+
+# Organizational affiliations
+gauge$organizations
+
+# Flood category thresholds
+gauge$flood_categories
+```
+
+### View flood impact statements
+
+Many gauges have stage-based impact statements describing what happens at different water levels:
+
+```{r}
+gauge$flood_impacts
+```
+
+### Historical flood crests
+
+You can also access historical and recent flood crest records:
+
+```{r}
+gauge$flood_crests |>
+  arrange(desc(stage)) |>
+  head(5)
+```
+
+## Stage and flow time series
+
+### Get observed and forecast data
+
+Use `nwps_gauge_stageflow()` to retrieve stage and flow time series. By default, it returns both observed and forecast data.
+
+```{r}
+stageflow <- nwps_gauge_stageflow("PTTP1")
+
+stageflow |>
+  group_by(product) |>
+  summarize(
+    n_obs = n(),
+    min_time = min(valid_time),
+    max_time = max(valid_time),
+    .groups = "drop"
+  )
+```
+
+### Visualize the hydrograph
+
+Plot the observed and forecast stages alongside flood thresholds:
+
+```{r hydrograph}
+flood_cats <- gauge$flood_categories
+
+ggplot(stageflow, aes(x = valid_time, y = primary, color = product)) +
+  geom_line() +
+  geom_hline(
+    data = flood_cats,
+    aes(yintercept = stage, linetype = category),
+    color = "gray40"
+  ) +
+  scale_linetype_manual(
+    values = c("action" = "dotted", "minor" = "dashed",
+               "moderate" = "longdash", "major" = "solid")
+  ) +
+  labs(
+    title = gauge$metadata$name,
+    x = NULL,
+    y = paste0("Stage (", stageflow$primary_units[1], ")"),
+    color = "Product",
+    linetype = "Flood Category"
+  )
+```
+
+### Get only observed or forecast data
+
+You can request just one product type:
+
+```{r}
+observed_only <- nwps_gauge_stageflow("PTTP1", product = "observed")
+forecast_only <- nwps_gauge_stageflow("PTTP1", product = "forecast")
+
+nrow(observed_only)
+nrow(forecast_only)
+```
+
+## Stage-to-flow ratings
+
+### Get the rating curve
+
+Use `nwps_gauge_ratings()` to retrieve the stage-to-flow rating curve for a gauge:
+
+```{r}
+ratings <- nwps_gauge_ratings("PTTP1")
+
+head(ratings)
+```
+
+### Visualize the rating curve
+
+```{r rating-curve}
+ggplot(ratings, aes(x = stage, y = flow)) +
+  geom_line() +
+  labs(
+    title = "Stage-to-Flow Rating Curve",
+    subtitle = gauge$metadata$name,
+    x = paste0("Stage (", ratings$stage_units[1], ")"),
+    y = paste0("Flow (", ratings$flow_units[1], ")")
+  )
+```
+
+## National Water Model data
+
+The NWPS API also provides access to National Water Model (NWM) streamflow forecasts by reach.
+
+### Get reach metadata
+
+Use `nwps_reach()` to retrieve metadata for an NWM reach:
+
+```{r}
+reach <- nwps_reach("22338099")
+
+reach$metadata
+reach$streamflow_products
+```
+
+The `upstream` and `downstream` tibbles show the reach network routing:
+
+```{r}
+head(reach$upstream)
+head(reach$downstream)
+```
+
+### Get NWM streamflow forecasts
+
+Use `nwps_reach_streamflow()` to retrieve streamflow forecasts. Different forecast series are available:
+
+- `"analysis_assimilation"`: Analysis and assimilation (recent past)
+- `"short_range"`: Short-range forecast (0-18 hours)
+- `"medium_range"`: Medium-range ensemble forecast (0-10 days)
+- `"medium_range_blend"`: Blended medium-range forecast
+- `"long_range"`: Long-range ensemble forecast (0-30 days)
+
+```{r}
+short_range <- nwps_reach_streamflow("22338099", series = "short_range")
+
+short_range |>
+  head(10)
+```
+
+### Visualize NWM forecasts
+
+```{r nwm-forecast}
+ggplot(short_range, aes(x = valid_time, y = flow)) +
+  geom_line() +
+  labs(
+    title = "NWM Short-Range Streamflow Forecast",
+    subtitle = paste("Reach:", reach$metadata$reach_id),
+    x = NULL,
+    y = paste0("Flow (", short_range$units[1], ")")
+  )
+```
+
+### Ensemble forecasts
+
+For medium and long-range forecasts, multiple ensemble members are available:
+
+```{r}
+medium_range <- nwps_reach_streamflow("22338099", series = "medium_range")
+
+medium_range |>
+  group_by(member) |>
+  summarize(n = n(), .groups = "drop")
+```
+
+## SHEF product codes
+
+### Access data by PEDTS code
+
+For more granular control, use `nwps_product_stageflow()` to request data by specific SHEF PEDTS (Physical Element Data Type Source) code:
+
+```{r}
+# Get the PEDTS codes for a gauge
+gauge$pedts
+
+# Request observed data using PEDTS code
+observed_pedts <- nwps_product_stageflow("PTTP1", "HGIRG")
+
+head(observed_pedts)
+```
+
+## System monitoring
+
+### Check API status
+
+Use `nwps_monitor()` to check the system health and data status:
+
+```{r}
+status <- nwps_monitor()
+
+# Gauges by observed flood category
+status$gauge_observed
+
+# Gauges by forecast flood category
+status$gauge_forecast
+```
+
+The monitoring endpoint also provides information about data processing:
+
+```{r}
+# HML product processing stats
+status$hml_product_counts
+
+# Long Range Outlook status
+status$lro
+```
+
+## Summary
+
+The nwps package provides a complete interface to the National Water Prediction Service API:
+
+| Function | Description |
+|----------|-------------|
+| `nwps_gauges()` | List gauges with spatial filtering |
+| `nwps_gauge()` | Get detailed gauge metadata |
+| `nwps_gauge_ratings()` | Get stage-to-flow rating curves |
+| `nwps_gauge_stageflow()` | Get observed/forecast stage and flow |
+| `nwps_reach()` | Get NWM reach metadata |
+| `nwps_reach_streamflow()` | Get NWM streamflow forecasts |
+| `nwps_product_stageflow()` | Get data by SHEF PEDTS code |
+| `nwps_monitor()` | Check system status |
+
+For more information about the NWPS API, visit the [API documentation](https://api.water.noaa.gov/nwps/v1/).

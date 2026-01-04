@@ -1,0 +1,12 @@
+^_pkgdown\.yml$
+^docs$
+^pkgdown$
+^\.github$
+^CLAUDE\.md$
+^\.claude$
+^.*\.Rproj$
+^\.Rproj\.user$
+^examples\.qmd$
+^README\.Rmd$
+^doc$
+^Meta$

@@ -1,0 +1,21 @@
+# pkgdown site
+docs/
+
+# R build artifacts
+*.Rcheck/
+*.tar.gz
+
+# RStudio files
+.Rproj.user
+*.Rproj
+
+# R history and data
+.Rhistory
+.RData
+.Ruserdata
+
+# Mac system files
+.DS_Store
+inst/doc
+/doc/
+/Meta/

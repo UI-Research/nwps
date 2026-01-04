@@ -1,0 +1,35 @@
+Package: nwps
+Title: Access the National Water Prediction Service API
+Version: 0.0.0.9000
+Authors@R:
+    person("Will", "Curran-Groome", email = "wcurrangroome@urban.org", role = c("aut", "cre"))
+Description: Provides functions to access all endpoints of the National Water
+    Prediction Service (NWPS) API. Retrieve gauge metadata, stage-to-flow
+    ratings, observed and forecast stage/flow data, National Water Model reach
+    data, and streamflow forecasts.
+License: MIT + file LICENSE
+Depends:
+    R (>= 4.1.0)
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.3
+URL: https://ui-research.github.io/nwps/, https://github.com/UI-Research/nwps, https://api.water.noaa.gov/nwps/v1/
+BugReports: https://github.com/UI-Research/nwps/issues
+Imports:
+    cli,
+    dplyr,
+    httr2,
+    rlang,
+    sf,
+    tibble
+Suggests:
+    ggplot2,
+    knitr,
+    pkgdown,
+    rmarkdown,
+    testthat (>= 3.0.0),
+    urbnthemes
+Remotes:
+    UrbanInstitute/urbnthemes
+Config/testthat/edition: 3
+VignetteBuilder: knitr

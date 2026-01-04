@@ -1,0 +1,36 @@
+url: https://ui-research.github.io/nwps/
+
+template:
+  bootstrap: 5
+
+navbar:
+  structure:
+    left: [intro, reference, articles]
+    right: [search, github]
+  components:
+    github:
+      icon: fa-github
+      href: https://github.com/UI-Research/nwps
+      aria-label: GitHub
+
+reference:
+  - title: Gauge Functions
+    desc: Functions for accessing gauge data
+    contents:
+      - nwps_gauges
+      - nwps_gauge
+      - nwps_gauge_ratings
+      - nwps_gauge_stageflow
+  - title: Reach Functions
+    desc: Functions for accessing NWM reach data
+    contents:
+      - nwps_reach
+      - nwps_reach_streamflow
+  - title: Product Functions
+    desc: Functions for accessing stage/flow products
+    contents:
+      - nwps_product_stageflow
+  - title: Utilities
+    desc: Helper and monitoring functions
+    contents:
+      - nwps_monitor
