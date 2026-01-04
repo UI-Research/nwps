@@ -205,7 +205,7 @@ stageflow |>
 #>   product  n_obs min_time            max_time           
 #>   <chr>    <int> <dttm>              <dttm>             
 #> 1 forecast    20 2026-01-04 18:00:00 2026-01-09 12:00:00
-#> 2 observed  8595 2025-12-05 19:40:00 2026-01-04 19:00:00
+#> 2 observed  8594 2025-12-05 20:15:00 2026-01-04 19:30:00
 ```
 
 ### Visualize the hydrograph
@@ -360,16 +360,16 @@ short_range |>
 #> # A tibble: 10 × 7
 #>    reach_id series    member reference_time      valid_time           flow units
 #>    <chr>    <chr>     <chr>  <dttm>              <dttm>              <dbl> <chr>
-#>  1 22338099 short_ra… series 2026-01-04 16:00:00 2026-01-04 17:00:00  54.4 ft³/s
-#>  2 22338099 short_ra… series 2026-01-04 16:00:00 2026-01-04 18:00:00  55.4 ft³/s
-#>  3 22338099 short_ra… series 2026-01-04 16:00:00 2026-01-04 19:00:00  58.6 ft³/s
-#>  4 22338099 short_ra… series 2026-01-04 16:00:00 2026-01-04 20:00:00  62.9 ft³/s
-#>  5 22338099 short_ra… series 2026-01-04 16:00:00 2026-01-04 21:00:00  68.5 ft³/s
-#>  6 22338099 short_ra… series 2026-01-04 16:00:00 2026-01-04 22:00:00  74.2 ft³/s
-#>  7 22338099 short_ra… series 2026-01-04 16:00:00 2026-01-04 23:00:00  78.4 ft³/s
-#>  8 22338099 short_ra… series 2026-01-04 16:00:00 2026-01-05 00:00:00  81.9 ft³/s
-#>  9 22338099 short_ra… series 2026-01-04 16:00:00 2026-01-05 01:00:00  84.0 ft³/s
-#> 10 22338099 short_ra… series 2026-01-04 16:00:00 2026-01-05 02:00:00  84.8 ft³/s
+#>  1 22338099 short_ra… series 2026-01-04 18:00:00 2026-01-04 19:00:00  57.2 ft³/s
+#>  2 22338099 short_ra… series 2026-01-04 18:00:00 2026-01-04 20:00:00  60.0 ft³/s
+#>  3 22338099 short_ra… series 2026-01-04 18:00:00 2026-01-04 21:00:00  65.0 ft³/s
+#>  4 22338099 short_ra… series 2026-01-04 18:00:00 2026-01-04 22:00:00  69.9 ft³/s
+#>  5 22338099 short_ra… series 2026-01-04 18:00:00 2026-01-04 23:00:00  74.2 ft³/s
+#>  6 22338099 short_ra… series 2026-01-04 18:00:00 2026-01-05 00:00:00  77.3 ft³/s
+#>  7 22338099 short_ra… series 2026-01-04 18:00:00 2026-01-05 01:00:00  79.5 ft³/s
+#>  8 22338099 short_ra… series 2026-01-04 18:00:00 2026-01-05 02:00:00  80.5 ft³/s
+#>  9 22338099 short_ra… series 2026-01-04 18:00:00 2026-01-05 03:00:00  81.6 ft³/s
+#> 10 22338099 short_ra… series 2026-01-04 18:00:00 2026-01-05 04:00:00  82.3 ft³/s
 ```
 
 ### Visualize NWM forecasts
@@ -434,12 +434,12 @@ head(observed_pedts)
 #> # A tibble: 6 × 12
 #>   pedts issued_time         wfo   time_zone valid_time         
 #>   <chr> <dttm>              <chr> <chr>     <dttm>             
-#> 1 HGIRG 2026-01-04 19:15:00 PBZ   EST5EDT   2025-12-05 19:35:00
-#> 2 HGIRG 2026-01-04 19:15:00 PBZ   EST5EDT   2025-12-05 19:40:00
-#> 3 HGIRG 2026-01-04 19:15:00 PBZ   EST5EDT   2025-12-05 19:45:00
-#> 4 HGIRG 2026-01-04 19:15:00 PBZ   EST5EDT   2025-12-05 19:50:00
-#> 5 HGIRG 2026-01-04 19:15:00 PBZ   EST5EDT   2025-12-05 19:55:00
-#> 6 HGIRG 2026-01-04 19:15:00 PBZ   EST5EDT   2025-12-05 20:00:00
+#> 1 HGIRG 2026-01-04 19:45:00 PBZ   EST5EDT   2025-12-05 20:05:00
+#> 2 HGIRG 2026-01-04 19:45:00 PBZ   EST5EDT   2025-12-05 20:10:00
+#> 3 HGIRG 2026-01-04 19:45:00 PBZ   EST5EDT   2025-12-05 20:15:00
+#> 4 HGIRG 2026-01-04 19:45:00 PBZ   EST5EDT   2025-12-05 20:20:00
+#> 5 HGIRG 2026-01-04 19:45:00 PBZ   EST5EDT   2025-12-05 20:25:00
+#> 6 HGIRG 2026-01-04 19:45:00 PBZ   EST5EDT   2025-12-05 20:30:00
 #> # ℹ 7 more variables: generated_time <dttm>, primary <dbl>, primary_name <chr>,
 #> #   primary_units <chr>, secondary <dbl>, secondary_name <chr>,
 #> #   secondary_units <chr>
@@ -461,14 +461,14 @@ status$gauge_observed
 #> # A tibble: 9 × 3
 #>   type     category        count
 #>   <chr>    <chr>           <int>
-#> 1 observed action             27
-#> 2 observed low_threshold      99
+#> 1 observed action             28
+#> 2 observed low_threshold      98
 #> 3 observed major               2
 #> 4 observed minor               3
 #> 5 observed moderate            2
-#> 6 observed no_flooding      6756
-#> 7 observed not_defined      3943
-#> 8 observed obs_not_current   903
+#> 6 observed no_flooding      6757
+#> 7 observed not_defined      3948
+#> 8 observed obs_not_current   897
 #> 9 observed out_of_service    801
 
 # Gauges by forecast flood category
@@ -476,8 +476,8 @@ status$gauge_forecast
 #> # A tibble: 8 × 3
 #>   type     category         count
 #>   <chr>    <chr>            <int>
-#> 1 forecast action              40
-#> 2 forecast fcst_not_current  9608
+#> 1 forecast action              39
+#> 2 forecast fcst_not_current  9609
 #> 3 forecast low_threshold        8
 #> 4 forecast minor                6
 #> 5 forecast moderate             1
@@ -495,15 +495,15 @@ status$hml_product_counts
 #>    time_period count
 #>    <chr>       <int>
 #>  1 t-10day     47073
-#>  2 t-10hour     1963
+#>  2 t-10hour     1961
 #>  3 t-11day     47112
-#>  4 t-11hour     1962
+#>  4 t-11hour     1963
 #>  5 t-12day     47115
-#>  6 t-12hour     1960
+#>  6 t-12hour     1962
 #>  7 t-13day     47117
-#>  8 t-13hour     1959
+#>  8 t-13hour     1960
 #>  9 t-14day     47032
-#> 10 t-14hour     1963
+#> 10 t-14hour     1959
 #> # ℹ 92 more rows
 
 # Long Range Outlook status
