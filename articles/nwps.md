@@ -12,7 +12,7 @@ set_urbn_defaults(style = "print")
 #> ℹ The deprecated feature was likely used in the urbnthemes package.
 #>   Please report the issue at
 #>   <https://github.com/UrbanInstitute/urbnthemes/issues>.
-#> This warning is displayed once every 8 hours.
+#> This warning is displayed once per session.
 #> Call `lifecycle::last_lifecycle_warnings()` to see where this warning was
 #> generated.
 #> Warning: The `size` argument of `element_rect()` is deprecated as of ggplot2 3.4.0.
@@ -20,7 +20,7 @@ set_urbn_defaults(style = "print")
 #> ℹ The deprecated feature was likely used in the urbnthemes package.
 #>   Please report the issue at
 #>   <https://github.com/UrbanInstitute/urbnthemes/issues>.
-#> This warning is displayed once every 8 hours.
+#> This warning is displayed once per session.
 #> Call `lifecycle::last_lifecycle_warnings()` to see where this warning was
 #> generated.
 ```
@@ -204,8 +204,8 @@ stageflow |>
 #> # A tibble: 2 × 4
 #>   product  n_obs min_time            max_time           
 #>   <chr>    <int> <dttm>              <dttm>             
-#> 1 forecast    20 2026-01-04 18:00:00 2026-01-09 12:00:00
-#> 2 observed  8594 2025-12-05 20:15:00 2026-01-04 19:30:00
+#> 1 forecast    20 2026-01-09 18:00:00 2026-01-14 12:00:00
+#> 2 observed  8603 2025-12-10 18:55:00 2026-01-09 18:15:00
 ```
 
 ### Visualize the hydrograph
@@ -235,7 +235,7 @@ ggplot(stageflow, aes(x = valid_time, y = primary, color = product)) +
   )
 #> Warning: The `scale_name` argument of `discrete_scale()` is deprecated as of ggplot2
 #> 3.5.0.
-#> This warning is displayed once every 8 hours.
+#> This warning is displayed once per session.
 #> Call `lifecycle::last_lifecycle_warnings()` to see where this warning was
 #> generated.
 ```
@@ -251,7 +251,7 @@ observed_only <- nwps_gauge_stageflow("PTTP1", product = "observed")
 forecast_only <- nwps_gauge_stageflow("PTTP1", product = "forecast")
 
 nrow(observed_only)
-#> [1] 8596
+#> [1] 8604
 nrow(forecast_only)
 #> [1] 20
 ```
@@ -360,16 +360,16 @@ short_range |>
 #> # A tibble: 10 × 7
 #>    reach_id series    member reference_time      valid_time           flow units
 #>    <chr>    <chr>     <chr>  <dttm>              <dttm>              <dbl> <chr>
-#>  1 22338099 short_ra… series 2026-01-04 18:00:00 2026-01-04 19:00:00  57.2 ft³/s
-#>  2 22338099 short_ra… series 2026-01-04 18:00:00 2026-01-04 20:00:00  60.0 ft³/s
-#>  3 22338099 short_ra… series 2026-01-04 18:00:00 2026-01-04 21:00:00  65.0 ft³/s
-#>  4 22338099 short_ra… series 2026-01-04 18:00:00 2026-01-04 22:00:00  69.9 ft³/s
-#>  5 22338099 short_ra… series 2026-01-04 18:00:00 2026-01-04 23:00:00  74.2 ft³/s
-#>  6 22338099 short_ra… series 2026-01-04 18:00:00 2026-01-05 00:00:00  77.3 ft³/s
-#>  7 22338099 short_ra… series 2026-01-04 18:00:00 2026-01-05 01:00:00  79.5 ft³/s
-#>  8 22338099 short_ra… series 2026-01-04 18:00:00 2026-01-05 02:00:00  80.5 ft³/s
-#>  9 22338099 short_ra… series 2026-01-04 18:00:00 2026-01-05 03:00:00  81.6 ft³/s
-#> 10 22338099 short_ra… series 2026-01-04 18:00:00 2026-01-05 04:00:00  82.3 ft³/s
+#>  1 22338099 short_ra… series 2026-01-09 16:00:00 2026-01-09 17:00:00  56.1 ft³/s
+#>  2 22338099 short_ra… series 2026-01-09 16:00:00 2026-01-09 18:00:00  56.5 ft³/s
+#>  3 22338099 short_ra… series 2026-01-09 16:00:00 2026-01-09 19:00:00  56.9 ft³/s
+#>  4 22338099 short_ra… series 2026-01-09 16:00:00 2026-01-09 20:00:00  57.6 ft³/s
+#>  5 22338099 short_ra… series 2026-01-09 16:00:00 2026-01-09 21:00:00  58.6 ft³/s
+#>  6 22338099 short_ra… series 2026-01-09 16:00:00 2026-01-09 22:00:00  59.7 ft³/s
+#>  7 22338099 short_ra… series 2026-01-09 16:00:00 2026-01-09 23:00:00  61.8 ft³/s
+#>  8 22338099 short_ra… series 2026-01-09 16:00:00 2026-01-10 00:00:00  65.7 ft³/s
+#>  9 22338099 short_ra… series 2026-01-09 16:00:00 2026-01-10 01:00:00  69.9 ft³/s
+#> 10 22338099 short_ra… series 2026-01-09 16:00:00 2026-01-10 02:00:00  73.4 ft³/s
 ```
 
 ### Visualize NWM forecasts
@@ -398,16 +398,15 @@ medium_range <- nwps_reach_streamflow("22338099", series = "medium_range")
 medium_range |>
   group_by(member) |>
   summarize(n = n(), .groups = "drop")
-#> # A tibble: 7 × 2
+#> # A tibble: 6 × 2
 #>   member      n
 #>   <chr>   <int>
 #> 1 mean      204
 #> 2 member1   240
-#> 3 member2   204
-#> 4 member3   204
-#> 5 member4   204
-#> 6 member5   204
-#> 7 member6   204
+#> 3 member3   204
+#> 4 member4   204
+#> 5 member5   204
+#> 6 member6   204
 ```
 
 ## SHEF product codes
@@ -434,12 +433,12 @@ head(observed_pedts)
 #> # A tibble: 6 × 12
 #>   pedts issued_time         wfo   time_zone valid_time         
 #>   <chr> <dttm>              <chr> <chr>     <dttm>             
-#> 1 HGIRG 2026-01-04 19:45:00 PBZ   EST5EDT   2025-12-05 20:05:00
-#> 2 HGIRG 2026-01-04 19:45:00 PBZ   EST5EDT   2025-12-05 20:10:00
-#> 3 HGIRG 2026-01-04 19:45:00 PBZ   EST5EDT   2025-12-05 20:15:00
-#> 4 HGIRG 2026-01-04 19:45:00 PBZ   EST5EDT   2025-12-05 20:20:00
-#> 5 HGIRG 2026-01-04 19:45:00 PBZ   EST5EDT   2025-12-05 20:25:00
-#> 6 HGIRG 2026-01-04 19:45:00 PBZ   EST5EDT   2025-12-05 20:30:00
+#> 1 HGIRG 2026-01-09 18:30:00 PBZ   EST5EDT   2025-12-10 18:50:00
+#> 2 HGIRG 2026-01-09 18:30:00 PBZ   EST5EDT   2025-12-10 18:55:00
+#> 3 HGIRG 2026-01-09 18:30:00 PBZ   EST5EDT   2025-12-10 19:00:00
+#> 4 HGIRG 2026-01-09 18:30:00 PBZ   EST5EDT   2025-12-10 19:05:00
+#> 5 HGIRG 2026-01-09 18:30:00 PBZ   EST5EDT   2025-12-10 19:10:00
+#> 6 HGIRG 2026-01-09 18:30:00 PBZ   EST5EDT   2025-12-10 19:15:00
 #> # ℹ 7 more variables: generated_time <dttm>, primary <dbl>, primary_name <chr>,
 #> #   primary_units <chr>, secondary <dbl>, secondary_name <chr>,
 #> #   secondary_units <chr>
@@ -461,29 +460,29 @@ status$gauge_observed
 #> # A tibble: 9 × 3
 #>   type     category        count
 #>   <chr>    <chr>           <int>
-#> 1 observed action             28
-#> 2 observed low_threshold      98
-#> 3 observed major               2
-#> 4 observed minor               3
-#> 5 observed moderate            2
-#> 6 observed no_flooding      6757
-#> 7 observed not_defined      3948
-#> 8 observed obs_not_current   897
-#> 9 observed out_of_service    801
+#> 1 observed action             26
+#> 2 observed low_threshold      86
+#> 3 observed major               3
+#> 4 observed minor               1
+#> 5 observed moderate            1
+#> 6 observed no_flooding      6790
+#> 7 observed not_defined      3967
+#> 8 observed obs_not_current   878
+#> 9 observed out_of_service    804
 
 # Gauges by forecast flood category
 status$gauge_forecast
 #> # A tibble: 8 × 3
 #>   type     category         count
 #>   <chr>    <chr>            <int>
-#> 1 forecast action              39
-#> 2 forecast fcst_not_current  9609
-#> 3 forecast low_threshold        8
-#> 4 forecast minor                6
+#> 1 forecast action              42
+#> 2 forecast fcst_not_current  9540
+#> 3 forecast low_threshold        5
+#> 4 forecast minor                1
 #> 5 forecast moderate             1
-#> 6 forecast no_flooding       1708
-#> 7 forecast not_defined        364
-#> 8 forecast out_of_service     801
+#> 6 forecast no_flooding       1783
+#> 7 forecast not_defined        380
+#> 8 forecast out_of_service     804
 ```
 
 The monitoring endpoint also provides information about data processing:
@@ -494,16 +493,16 @@ status$hml_product_counts
 #> # A tibble: 102 × 2
 #>    time_period count
 #>    <chr>       <int>
-#>  1 t-10day     47073
-#>  2 t-10hour     1961
-#>  3 t-11day     47112
-#>  4 t-11hour     1963
-#>  5 t-12day     47115
-#>  6 t-12hour     1962
-#>  7 t-13day     47117
-#>  8 t-13hour     1960
-#>  9 t-14day     47032
-#> 10 t-14hour     1959
+#>  1 t-10day     47087
+#>  2 t-10hour     1950
+#>  3 t-11day     46954
+#>  4 t-11hour     1955
+#>  5 t-12day     47038
+#>  6 t-12hour     1951
+#>  7 t-13day     47107
+#>  8 t-13hour     1953
+#>  9 t-14day     47099
+#> 10 t-14hour     1955
 #> # ℹ 92 more rows
 
 # Long Range Outlook status
@@ -511,7 +510,7 @@ status$lro
 #> # A tibble: 1 × 2
 #>   current_lros current_interval
 #>          <int> <chr>           
-#> 1          353 JFM
+#> 1         1029 JFM
 ```
 
 ## Summary

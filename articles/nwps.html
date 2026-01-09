@@ -71,7 +71,7 @@
 <span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> The deprecated feature was likely used in the <span style="color: #0000BB;">urbnthemes</span> package.</span></span>
 <span><span class="co">#&gt;   Please report the issue at</span></span>
 <span><span class="co">#&gt;   <span style="color: #0000BB; font-style: italic;">&lt;https://github.com/UrbanInstitute/urbnthemes/issues&gt;</span>.</span></span>
-<span><span class="co">#&gt; <span style="color: #555555;">This warning is displayed once every 8 hours.</span></span></span>
+<span><span class="co">#&gt; <span style="color: #555555;">This warning is displayed once per session.</span></span></span>
 <span><span class="co">#&gt; <span style="color: #555555;">Call `lifecycle::last_lifecycle_warnings()` to see where this warning was</span></span></span>
 <span><span class="co">#&gt; <span style="color: #555555;">generated.</span></span></span>
 <span><span class="co">#&gt; Warning: The `size` argument of `element_rect()` is deprecated as of ggplot2 3.4.0.</span></span>
@@ -79,7 +79,7 @@
 <span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> The deprecated feature was likely used in the <span style="color: #0000BB;">urbnthemes</span> package.</span></span>
 <span><span class="co">#&gt;   Please report the issue at</span></span>
 <span><span class="co">#&gt;   <span style="color: #0000BB; font-style: italic;">&lt;https://github.com/UrbanInstitute/urbnthemes/issues&gt;</span>.</span></span>
-<span><span class="co">#&gt; <span style="color: #555555;">This warning is displayed once every 8 hours.</span></span></span>
+<span><span class="co">#&gt; <span style="color: #555555;">This warning is displayed once per session.</span></span></span>
 <span><span class="co">#&gt; <span style="color: #555555;">Call `lifecycle::last_lifecycle_warnings()` to see where this warning was</span></span></span>
 <span><span class="co">#&gt; <span style="color: #555555;">generated.</span></span></span></code></pre></div>
 <div class="section level2">
@@ -255,8 +255,8 @@ time series. By default, it returns both observed and forecast data.</p>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 2 × 4</span></span></span>
 <span><span class="co">#&gt;   product  n_obs min_time            max_time           </span></span>
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dttm&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;dttm&gt;</span>             </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> forecast    20 2026-01-04 <span style="color: #949494;">18:00:00</span> 2026-01-09 <span style="color: #949494;">12:00:00</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> observed  <span style="text-decoration: underline;">8</span>594 2025-12-05 <span style="color: #949494;">20:15:00</span> 2026-01-04 <span style="color: #949494;">19:30:00</span></span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> forecast    20 2026-01-09 <span style="color: #949494;">18:00:00</span> 2026-01-14 <span style="color: #949494;">12:00:00</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> observed  <span style="text-decoration: underline;">8</span>603 2025-12-10 <span style="color: #949494;">18:55:00</span> 2026-01-09 <span style="color: #949494;">18:15:00</span></span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="visualize-the-hydrograph">Visualize the hydrograph<a class="anchor" aria-label="anchor" href="#visualize-the-hydrograph"></a>
@@ -285,7 +285,7 @@ time series. By default, it returns both observed and forecast data.</p>
 <span>  <span class="op">)</span></span>
 <span><span class="co">#&gt; Warning: The `scale_name` argument of `discrete_scale()` is deprecated as of ggplot2</span></span>
 <span><span class="co">#&gt; 3.5.0.</span></span>
-<span><span class="co">#&gt; <span style="color: #555555;">This warning is displayed once every 8 hours.</span></span></span>
+<span><span class="co">#&gt; <span style="color: #555555;">This warning is displayed once per session.</span></span></span>
 <span><span class="co">#&gt; <span style="color: #555555;">Call `lifecycle::last_lifecycle_warnings()` to see where this warning was</span></span></span>
 <span><span class="co">#&gt; <span style="color: #555555;">generated.</span></span></span></code></pre></div>
 <p><img src="nwps_files/figure-html/hydrograph-1.png" class="r-plt" alt="" width="672"></p>
@@ -299,7 +299,7 @@ time series. By default, it returns both observed and forecast data.</p>
 <span><span class="va">forecast_only</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/nwps_gauge_stageflow.html">nwps_gauge_stageflow</a></span><span class="op">(</span><span class="st">"PTTP1"</span>, product <span class="op">=</span> <span class="st">"forecast"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">observed_only</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] 8596</span></span>
+<span><span class="co">#&gt; [1] 8604</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">forecast_only</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 20</span></span></code></pre></div>
 </div>
@@ -411,16 +411,16 @@ days)</li>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 10 × 7</span></span></span>
 <span><span class="co">#&gt;    reach_id series    member reference_time      valid_time           flow units</span></span>
 <span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dttm&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;dttm&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> 22338099 short_ra… series 2026-01-04 <span style="color: #949494;">18:00:00</span> 2026-01-04 <span style="color: #949494;">19:00:00</span>  57.2 ft³/s</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> 22338099 short_ra… series 2026-01-04 <span style="color: #949494;">18:00:00</span> 2026-01-04 <span style="color: #949494;">20:00:00</span>  60.0 ft³/s</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> 22338099 short_ra… series 2026-01-04 <span style="color: #949494;">18:00:00</span> 2026-01-04 <span style="color: #949494;">21:00:00</span>  65.0 ft³/s</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> 22338099 short_ra… series 2026-01-04 <span style="color: #949494;">18:00:00</span> 2026-01-04 <span style="color: #949494;">22:00:00</span>  69.9 ft³/s</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> 22338099 short_ra… series 2026-01-04 <span style="color: #949494;">18:00:00</span> 2026-01-04 <span style="color: #949494;">23:00:00</span>  74.2 ft³/s</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> 22338099 short_ra… series 2026-01-04 <span style="color: #949494;">18:00:00</span> 2026-01-05 <span style="color: #949494;">00:00:00</span>  77.3 ft³/s</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> 22338099 short_ra… series 2026-01-04 <span style="color: #949494;">18:00:00</span> 2026-01-05 <span style="color: #949494;">01:00:00</span>  79.5 ft³/s</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> 22338099 short_ra… series 2026-01-04 <span style="color: #949494;">18:00:00</span> 2026-01-05 <span style="color: #949494;">02:00:00</span>  80.5 ft³/s</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> 22338099 short_ra… series 2026-01-04 <span style="color: #949494;">18:00:00</span> 2026-01-05 <span style="color: #949494;">03:00:00</span>  81.6 ft³/s</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> 22338099 short_ra… series 2026-01-04 <span style="color: #949494;">18:00:00</span> 2026-01-05 <span style="color: #949494;">04:00:00</span>  82.3 ft³/s</span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> 22338099 short_ra… series 2026-01-09 <span style="color: #949494;">16:00:00</span> 2026-01-09 <span style="color: #949494;">17:00:00</span>  56.1 ft³/s</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> 22338099 short_ra… series 2026-01-09 <span style="color: #949494;">16:00:00</span> 2026-01-09 <span style="color: #949494;">18:00:00</span>  56.5 ft³/s</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> 22338099 short_ra… series 2026-01-09 <span style="color: #949494;">16:00:00</span> 2026-01-09 <span style="color: #949494;">19:00:00</span>  56.9 ft³/s</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> 22338099 short_ra… series 2026-01-09 <span style="color: #949494;">16:00:00</span> 2026-01-09 <span style="color: #949494;">20:00:00</span>  57.6 ft³/s</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> 22338099 short_ra… series 2026-01-09 <span style="color: #949494;">16:00:00</span> 2026-01-09 <span style="color: #949494;">21:00:00</span>  58.6 ft³/s</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> 22338099 short_ra… series 2026-01-09 <span style="color: #949494;">16:00:00</span> 2026-01-09 <span style="color: #949494;">22:00:00</span>  59.7 ft³/s</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> 22338099 short_ra… series 2026-01-09 <span style="color: #949494;">16:00:00</span> 2026-01-09 <span style="color: #949494;">23:00:00</span>  61.8 ft³/s</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> 22338099 short_ra… series 2026-01-09 <span style="color: #949494;">16:00:00</span> 2026-01-10 <span style="color: #949494;">00:00:00</span>  65.7 ft³/s</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> 22338099 short_ra… series 2026-01-09 <span style="color: #949494;">16:00:00</span> 2026-01-10 <span style="color: #949494;">01:00:00</span>  69.9 ft³/s</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> 22338099 short_ra… series 2026-01-09 <span style="color: #949494;">16:00:00</span> 2026-01-10 <span style="color: #949494;">02:00:00</span>  73.4 ft³/s</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="visualize-nwm-forecasts">Visualize NWM forecasts<a class="anchor" aria-label="anchor" href="#visualize-nwm-forecasts"></a>
@@ -447,16 +447,15 @@ available:</p>
 <span><span class="va">medium_range</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">member</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">summarize</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html" class="external-link">n</a></span><span class="op">(</span><span class="op">)</span>, .groups <span class="op">=</span> <span class="st">"drop"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 7 × 2</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 2</span></span></span>
 <span><span class="co">#&gt;   member      n</span></span>
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> mean      204</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> member1   240</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> member2   204</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> member3   204</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> member4   204</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> member5   204</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">7</span> member6   204</span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> member3   204</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> member4   204</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> member5   204</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> member6   204</span></span></code></pre></div>
 </div>
 </div>
 <div class="section level2">
@@ -483,12 +482,12 @@ Source) code:</p>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 12</span></span></span>
 <span><span class="co">#&gt;   pedts issued_time         wfo   time_zone valid_time         </span></span>
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dttm&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dttm&gt;</span>             </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> HGIRG 2026-01-04 <span style="color: #949494;">19:45:00</span> PBZ   EST5EDT   2025-12-05 <span style="color: #949494;">20:05:00</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> HGIRG 2026-01-04 <span style="color: #949494;">19:45:00</span> PBZ   EST5EDT   2025-12-05 <span style="color: #949494;">20:10:00</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> HGIRG 2026-01-04 <span style="color: #949494;">19:45:00</span> PBZ   EST5EDT   2025-12-05 <span style="color: #949494;">20:15:00</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> HGIRG 2026-01-04 <span style="color: #949494;">19:45:00</span> PBZ   EST5EDT   2025-12-05 <span style="color: #949494;">20:20:00</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> HGIRG 2026-01-04 <span style="color: #949494;">19:45:00</span> PBZ   EST5EDT   2025-12-05 <span style="color: #949494;">20:25:00</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> HGIRG 2026-01-04 <span style="color: #949494;">19:45:00</span> PBZ   EST5EDT   2025-12-05 <span style="color: #949494;">20:30:00</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> HGIRG 2026-01-09 <span style="color: #949494;">18:30:00</span> PBZ   EST5EDT   2025-12-10 <span style="color: #949494;">18:50:00</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> HGIRG 2026-01-09 <span style="color: #949494;">18:30:00</span> PBZ   EST5EDT   2025-12-10 <span style="color: #949494;">18:55:00</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> HGIRG 2026-01-09 <span style="color: #949494;">18:30:00</span> PBZ   EST5EDT   2025-12-10 <span style="color: #949494;">19:00:00</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> HGIRG 2026-01-09 <span style="color: #949494;">18:30:00</span> PBZ   EST5EDT   2025-12-10 <span style="color: #949494;">19:05:00</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> HGIRG 2026-01-09 <span style="color: #949494;">18:30:00</span> PBZ   EST5EDT   2025-12-10 <span style="color: #949494;">19:10:00</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> HGIRG 2026-01-09 <span style="color: #949494;">18:30:00</span> PBZ   EST5EDT   2025-12-10 <span style="color: #949494;">19:15:00</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 7 more variables: generated_time &lt;dttm&gt;, primary &lt;dbl&gt;, primary_name &lt;chr&gt;,</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;">#   primary_units &lt;chr&gt;, secondary &lt;dbl&gt;, secondary_name &lt;chr&gt;,</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;">#   secondary_units &lt;chr&gt;</span></span></span></code></pre></div>
@@ -510,29 +509,29 @@ status:</p>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 9 × 3</span></span></span>
 <span><span class="co">#&gt;   type     category        count</span></span>
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> observed action             28</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> observed low_threshold      98</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> observed major               2</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> observed minor               3</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> observed moderate            2</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> observed no_flooding      <span style="text-decoration: underline;">6</span>757</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">7</span> observed not_defined      <span style="text-decoration: underline;">3</span>948</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">8</span> observed obs_not_current   897</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">9</span> observed out_of_service    801</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> observed action             26</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> observed low_threshold      86</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> observed major               3</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> observed minor               1</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> observed moderate            1</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> observed no_flooding      <span style="text-decoration: underline;">6</span>790</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">7</span> observed not_defined      <span style="text-decoration: underline;">3</span>967</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">8</span> observed obs_not_current   878</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">9</span> observed out_of_service    804</span></span>
 <span></span>
 <span><span class="co"># Gauges by forecast flood category</span></span>
 <span><span class="va">status</span><span class="op">$</span><span class="va">gauge_forecast</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 8 × 3</span></span></span>
 <span><span class="co">#&gt;   type     category         count</span></span>
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> forecast action              39</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> forecast fcst_not_current  <span style="text-decoration: underline;">9</span>609</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> forecast low_threshold        8</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> forecast minor                6</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> forecast action              42</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> forecast fcst_not_current  <span style="text-decoration: underline;">9</span>540</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> forecast low_threshold        5</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> forecast minor                1</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> forecast moderate             1</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> forecast no_flooding       <span style="text-decoration: underline;">1</span>708</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">7</span> forecast not_defined        364</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">8</span> forecast out_of_service     801</span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> forecast no_flooding       <span style="text-decoration: underline;">1</span>783</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">7</span> forecast not_defined        380</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">8</span> forecast out_of_service     804</span></span></code></pre></div>
 <p>The monitoring endpoint also provides information about data
 processing:</p>
 <div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
@@ -541,16 +540,16 @@ processing:</p>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 102 × 2</span></span></span>
 <span><span class="co">#&gt;    time_period count</span></span>
 <span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> t-10day     <span style="text-decoration: underline;">47</span>073</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> t-10hour     <span style="text-decoration: underline;">1</span>961</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> t-11day     <span style="text-decoration: underline;">47</span>112</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> t-11hour     <span style="text-decoration: underline;">1</span>963</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> t-12day     <span style="text-decoration: underline;">47</span>115</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> t-12hour     <span style="text-decoration: underline;">1</span>962</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> t-13day     <span style="text-decoration: underline;">47</span>117</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> t-13hour     <span style="text-decoration: underline;">1</span>960</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> t-14day     <span style="text-decoration: underline;">47</span>032</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> t-14hour     <span style="text-decoration: underline;">1</span>959</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> t-10day     <span style="text-decoration: underline;">47</span>087</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> t-10hour     <span style="text-decoration: underline;">1</span>950</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> t-11day     <span style="text-decoration: underline;">46</span>954</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> t-11hour     <span style="text-decoration: underline;">1</span>955</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> t-12day     <span style="text-decoration: underline;">47</span>038</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> t-12hour     <span style="text-decoration: underline;">1</span>951</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> t-13day     <span style="text-decoration: underline;">47</span>107</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> t-13hour     <span style="text-decoration: underline;">1</span>953</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> t-14day     <span style="text-decoration: underline;">47</span>099</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> t-14hour     <span style="text-decoration: underline;">1</span>955</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 92 more rows</span></span></span>
 <span></span>
 <span><span class="co"># Long Range Outlook status</span></span>
@@ -558,7 +557,7 @@ processing:</p>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 2</span></span></span>
 <span><span class="co">#&gt;   current_lros current_interval</span></span>
 <span><span class="co">#&gt;          <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>           </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>          353 JFM</span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>         <span style="text-decoration: underline;">1</span>029 JFM</span></span></code></pre></div>
 </div>
 </div>
 <div class="section level2">
